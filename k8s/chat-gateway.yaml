@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chat-gateway
+  template:
+    metadata:
+      labels:
+        app: chat-gateway
+    spec:
+      containers:
+        - name: chat-gateway
+          image: 'hanivanrizky/chat-gateway:1.0.0'
+          resources:
+            requests:
+              cpu: '250m'
+              memory: '64Mi'
+            limits:
+              cpu: '500m'
+              memory: '128Mi'
+          ports:
+            - containerPort: 3001
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chat-gateway
+spec:
+  type: LoadBalancer
+  externalIPs:
+    - 192.168.49.2
+  selector:
+    app: chat-gateway
+  ports:
+    - protocol: TCP
+      name: main-port
+      port: 3001
+      targetPort: 3001

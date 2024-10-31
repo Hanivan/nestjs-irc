@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IRC Chat</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    <script type="module" src="/js/main.js"></script>
+</head>
+
+<body>
+    <div id="room-list">
+        <h2>Chat Rooms</h2>
+        <ul>
+            <li><a href="?username={{username}}&room=general">General</a></li>
+            <li><a href="?username={{username}}&room=introduction">Introduction</a></li>
+            <li><a href="?username={{username}}&room=chill-chat">Chill Chat</a></li>
+            <li><a href="?username={{username}}&room=tech-sharing">Tech Sharing</a></li>
+        </ul>
+    </div>
+
+    <div id="chat-container">
+        <h1>Welcome, {{username}}!</h1>
+        <ul id="messages"></ul>
+        <form id="messageForm">
+            <input id="message" type="text" placeholder="Enter message..." required autocomplete="off" autofocus />
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
